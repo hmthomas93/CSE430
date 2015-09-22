@@ -30,14 +30,10 @@ void initQueue(node **head)
 node* newItem()
 {
 	puts("test newItem");
-	node *newNode;
-	puts("1");
-
-	newNode->next = NULL;
-	puts("2");
-	newNode->prev = NULL;
-	puts("3");
-
+	node *newNode = NULL;
+	newNode->next;// = NULL; -->Segmentation Fault
+	newNode->prev;// = NULL; -->Segmentation Fault
+	puts("Passed NewItem");
 	return newNode;
 }
 
@@ -48,12 +44,11 @@ void addQueue(node **head, node *item)
 	//if empty, point to self
 	if (head == NULL)
 	{
-		puts("Hi");
-		item->next = item;
-		puts("head = NULL");
-		item->prev = item;
+		item->next;// = NULL;-->Segmentation fault
 
-		*head = item;
+		item->prev;// = NULL;-->Segmentation Fault
+		//*head = item; --> Segmentation Fault
+		puts("head = NULL");
 	}
 	//else place at end of circular queue
 	else
@@ -70,29 +65,37 @@ void addQueue(node **head, node *item)
 node* delQueue(node **head)
 {
 	node *temp;
-
+	puts("delQueue");
 	//if queue is empty
 	if (*head == NULL)
+	{
+		puts("1");
 		return NULL;
 
+	}
 	//if there is one element
 	else if ((*head)->next == *head)
 	{
+		puts("2");
 		temp = *head;
 		*head == NULL;
+
 	}
 
 	//else if there are many elements
 	else
 	{
+		puts("3");
 		temp = *head;
 
 		(*head)->next->prev = (*head)->prev;
 		(*head)->prev->next = (*head)->next;
 		(*head) = (*head)->next;
+
 	}
 
 	//return deleted item
+	puts("delQueue");
 	return temp;
 }
 
