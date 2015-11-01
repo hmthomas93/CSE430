@@ -4,6 +4,7 @@ Hailee Thomas & Sean Slamka*/
 #include <ucontext.h>
 
 //Type to store next and previous pointers and the context thread
+//Type def to create TCB_t structure
 typedef struct TCB_t {
 	struct TCB_t     *next;
 	struct TCB_t     *prev;
